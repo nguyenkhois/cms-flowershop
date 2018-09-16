@@ -1,0 +1,168 @@
+/* Created by Khoi Le */
+
+/* Added custom styles for navbar in Bootstrap */
+/*------ BACKGROUND ------*/
+.bg-navy {background-color: #112945 !important;}
+.bg-green{background: #cfc;}
+.bg-yellow{background: #ffc;}
+.bg-violet{background: #ccf;}
+.bg-blue{background: #3660b8;}
+.bg-black{background: #292c32;}
+.bg-light-red{background: #dc0000;}
+
+/* CUSTOM COMPONENTS */
+/*------ BOX ------*/
+.box{padding: 15px;margin:0;position: relative;
+    border: thin solid #cbcbcb;border-radius: 5px;}
+
+/* Box styles */
+.box-classic{background: #f8f8f8;}
+.box-shadow{box-shadow: 3px 3px 5px #e5e5e5;}
+
+/*------ STICKY ------*/
+.sticky{padding: 15px;margin:0;position: relative;
+    border: thin solid #cbcbcb;
+    box-shadow: 3px 3px 5px #e5e5e5;}
+
+/*------ EFFECTS ------*/
+.effect-scale{cursor: pointer;}
+.effect-scale:hover{box-shadow: 2px 2px 5px #e9e9e9;transition: all .2s linear;transform: scale(1.02);}
+
+.effect-dashed{cursor: pointer;}
+.effect-dashed:hover{color: #6495ed;border: thin dashed #6495ed;}
+
+/*------ ROTATIONS ------*/
+.rotate-left{transform: rotate(-5deg);}
+.rotate-right{transform: rotate(5deg);}
+
+/*------ FILTERS ------*/
+.grayscale{filter: grayscale(100%);}
+.grayscale:hover{filter: none;}
+
+/* ---------- USING ONLY FOR THIS PROJECT ---------- */
+.product-item{
+    width: 250px;
+    margin: 10px 10px 10px 10px;
+    text-align: center;    
+}
+    .product-item img{
+        width: 200px;
+    }
+.product-detail img{
+    width: 200px;
+}
+.product-title{
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+.product-price{
+    font-weight: bold;
+    color: #3660b8;
+}
+.product-instock{
+    color: green;
+}
+
+/* Review */
+.review-main-title{
+    font-weight: bold;
+    font-size: 1.3em;
+    padding-bottom: 20px;
+}
+.review-message{
+    color: green;
+}
+.review-item{
+    margin: 10px 0 20px 0;
+}
+
+/* begin from */
+.sendReview{margin: 20px;width: 600px;margin: 50px 0 50px 0;}
+.frm-sendReview{}
+.frm-sendReview input{width: 450px;}
+.frm-sendReview input[type="radio"]{width: 13px; text-align: left; margin-right: 15px;}
+.frm-sendReview textarea{width: 450px;height: 200px;}
+.reviewInput{
+    /* Clear the user's operating system's theme */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    /* Apply own styles */
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+
+    width: 90%;
+    height: 30px;
+}
+.reviewInput:focus{border: 1px solid #0094ff;box-shadow: 0 0 5px #0094ff;}
+.review-box{margin-bottom: 10px;}
+.review-customer-name{font-weight: bold;}
+.review-stars{height: 15px;margin: 0 0 5px 5px;}
+.required{color: #ff0000;}
+/* end form */
+
+/* Buttons */
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+.button_buy {
+    background-color: #ffffff;
+    color: black;
+    border: 2px solid #2d6aa5;
+    position: center;
+    bottom: 10px;
+}
+.button_buy:hover {background-color: #2d6aa5;color: white;}
+.button_order {
+    background-color: #2d6aa5;
+    color: #ffffff;
+    border: 2px solid #2d6aa5;
+    position: center;
+    bottom: 10px;
+}
+.button_order:hover {background-color: #ffffff;color: #000000;}
+.button_send_review {
+    background-color: #2d6aa5;
+    color: #ffffff;
+    border: 2px solid #2d6aa5;
+    position: center;
+    bottom: 10px;
+}
+.button_send_review:hover {background-color: #ffffff;color: #000000;}
+
+
+/* Left menu */
+.left-menu{
+    width: 100%;
+    padding: 10px 10px 10px 10px;
+    background: rgb(2, 80, 2);
+    color: #f8f8f8;
+    cursor: pointer;
+}
+    .left-menu:hover{
+        background: rgb(89, 156, 89);
+    }
+    .left-menu a{
+        color: #f8f8f8;
+        text-decoration: none;
+    }
+        .left-menu a:hover{
+            text-decoration: none;
+        }
