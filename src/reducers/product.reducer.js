@@ -11,11 +11,11 @@
 export const productReducer = (state = {}, action) => {
     switch (action.type) {
         case 'STORE_PRODUCTS':
-            const productList = {
+            return {
                 ...state,
                 productList: action.payload
-            };
-            return productList
+            }
+            
         default:
             return state
     }

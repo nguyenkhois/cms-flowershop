@@ -3,7 +3,7 @@
  * state 
  * action = {
  *      type: 'STRING',
- *      payload: []
+ *      payload: {}
  * }
  * 
  */
@@ -12,14 +12,19 @@ export const cartReducer = (state = [], action) => {
         case 'ADD_TO_CART':
             const cartItem = [];
             cartItem.push(action.payload)
-            const cartAfterAdded = state.concat(cartItem); // Using none mutating method
-            return cartAfterAdded
+            return state.concat(cartItem); // Using none mutating method
+
         case 'UPDATE_QUANTITY':
-            const cartAfterEditQuantity = state.map((item) => 
-                    item.productId === action.payload.productId ?
-                    {...item, quantity: item.quantity + action.payload.quantity } :
-                    item)
-            return cartAfterEditQuantity
+            return state.map((item) => item.productId === action.payload.productId ?
+                                        {...item, quantity: item.quantity + action.payload.quantity } :
+                                        item)
+
+        case 'REMOVE_FROM_CART':
+            return state.filter(item => item.productId !== action.payload)
+
+        case 'CLEAR_CART':
+            return []
+
         default:
             return state
     }

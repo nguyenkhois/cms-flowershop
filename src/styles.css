@@ -70,6 +70,19 @@
     height: 30px;
     color: green;
 }
+.icon-delete svg{
+    height: 15px;
+    cursor: pointer;
+}
+.cart-sum{
+    text-align: right;
+    font-weight: bold;
+}
+.cart-message-area{
+    padding: 10px;
+    height: 40px;
+    color: green;
+}
 
 /* Review */
 .review-main-title{

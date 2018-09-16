@@ -63,6 +63,16 @@ Array.prototype.filterByProperty = function (sPropertyName, sSeekingValue) {
     } catch (e) { return e }
 }
 
+// Remove an object (or many objects) in an object array by object property
+Array.prototype.removeByProperty = function (sPropertyName, sSeekingValue) {
+    try {
+        if (this.length > 0)
+            return this.filter(objItem => objItem[sPropertyName] !== sSeekingValue);
+        else
+            return []
+    } catch (e) { return e }
+}
+
 // Return the max value in an object array by using object property
 Array.prototype.getMax = function (sPropertyName) {
     try {
