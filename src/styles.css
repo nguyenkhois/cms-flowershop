@@ -64,6 +64,13 @@
     color: green;
 }
 
+/* Shopping cart */
+.message-area{
+    padding: 10px 0 0 0;
+    height: 30px;
+    color: green;
+}
+
 /* Review */
 .review-main-title{
     font-weight: bold;

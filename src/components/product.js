@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { APIConfig } from '../config';
 
 import { Review } from './review';
+import { AddToCart } from './add-to-cart';
 
 const mapStateToProps = (state) => {
     return ({
@@ -57,6 +58,9 @@ class ProductDetailClass extends Component {
                             </div>
                             <div className="product-instock">
                                 In stock: { productDetail.inStock } items
+                            </div>
+                            <div>
+                                <AddToCart product={productDetail}/>
                             </div>
                         </div>
                     </div>

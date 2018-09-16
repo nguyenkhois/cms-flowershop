@@ -16,12 +16,6 @@ export const productReducer = (state = {}, action) => {
                 productList: action.payload
             };
             return productList
-        case 'STORE_ALL_PRODUCTS':
-            const productFullList = {
-                ...state,
-                productFullList: action.payload
-            }
-            return productFullList
         default:
             return state
     }

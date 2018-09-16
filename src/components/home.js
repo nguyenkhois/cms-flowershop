@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import '../lib'; // For using own String.prototype
 
 import { APIConfig } from '../config';
+import { AddToCart } from './add-to-cart';
 
 export class Home extends Component {
     constructor(props) {
@@ -80,6 +81,9 @@ export class Home extends Component {
                                     <div className="col product-instock">
                                         In stock {item.inStock}
                                     </div>
+                                </div>
+                                <div className="row justify-content-center">
+                                    <AddToCart product={item}/>
                                 </div>
                             </div>
                         )}

@@ -7,6 +7,7 @@ import { APIConfig } from '../config';
 import { productActions } from '../actions/product.action';
 
 import { SortBox } from './sort-box';
+import { AddToCart } from './add-to-cart';
 
 const mapDispatchToProps = {
     storeProducts: productActions.storeProducts
@@ -40,7 +41,7 @@ class ProductListClass extends Component {
                 - Get data from Redux state
         
         2/  Sort data happen in Redux state - Component <SortBox/>
-        3/  This component get only data from Redux state
+        3/  OBS! This component get only data from Redux state
         ---------- */
 
         const productList = this.props.productList;
@@ -70,6 +71,9 @@ class ProductListClass extends Component {
                                     </div>
                                     <div className="col product-instock">
                                         In stock {item.inStock}
+                                    </div>
+                                    <div>
+                                        <AddToCart product={item}/>
                                     </div>
                                 </div>
                             </div>
