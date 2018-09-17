@@ -77,13 +77,13 @@ export class Review extends Component {
             <div>
                 <div className="row">
                     <div className="col">
-                        <div className="box box-default sendReview">
-                            <form id="frmSendReview" action="#" className="frm-sendReview">
+                        <div className="box box-default common-area">
+                            <form id="frmSendReview" action="#" className="common-frm">
                                 <table>
                                     <thead>
                                         <tr>
                                             <td colSpan="2">
-                                                <span className="review-main-title">Your review</span> <span className="review-message">{this.state.message}</span>
+                                                <span className="common-main-title">Your review</span> <span className="review-message">{this.state.message}</span>
                                             </td>
                                         </tr>
                                     </thead>
@@ -102,7 +102,7 @@ export class Review extends Component {
                                         </tr>
                                         <tr>
                                             <td><label htmlFor="txtName">Your name</label></td>
-                                            <td><input type="text" id="txtName" name="name" className="reviewInput" required
+                                            <td><input type="text" id="txtName" name="name" className="common-input" required
                                                 onChange={e => this.handleInputChange(e)}
                                                 value={this.state.customerReview.name}
                                             /><span className="required">*</span>
@@ -110,14 +110,14 @@ export class Review extends Component {
                                         </tr>
                                         <tr>
                                             <td><label htmlFor="txtEmail">E-mail</label></td>
-                                            <td><input type="text" id="txtEmail" name="email" className="reviewInput"
+                                            <td><input type="text" id="txtEmail" name="email" className="common-input"
                                                 onChange={e => this.handleInputChange(e)}
                                                 value={this.state.customerReview.email}
                                             /></td>
                                         </tr>
                                         <tr>
                                             <td><label htmlFor="txtContent">Comment</label></td>
-                                            <td><textarea name="txtContent" id="txtContent" name="content" cols="30" rows="10" className="reviewInput" required
+                                            <td><textarea name="txtContent" id="txtContent" name="content" cols="30" rows="10" className="common-input" required
                                                 onChange={e => this.handleInputChange(e)}
                                                 value={this.state.customerReview.content}
                                             ></textarea><span className="required">*</span></td>

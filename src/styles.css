@@ -40,70 +40,17 @@
 .grayscale:hover{filter: none;}
 
 /* ---------- USING ONLY FOR THIS PROJECT ---------- */
-.product-item{
-    width: 250px;
-    margin: 10px 10px 10px 10px;
-    text-align: center;    
-}
-    .product-item img{
-        width: 200px;
-    }
-.product-detail img{
-    width: 200px;
-}
-.product-title{
-    font-weight: bold;
-    font-size: 1.3em;
-}
 
-.product-price{
-    font-weight: bold;
-    color: #3660b8;
-}
-.product-instock{
-    color: green;
-}
-
-/* Shopping cart */
-.message-area{
-    padding: 10px 0 0 0;
-    height: 30px;
-    color: green;
-}
-.icon-delete svg{
-    height: 15px;
-    cursor: pointer;
-}
-.cart-sum{
-    text-align: right;
-    font-weight: bold;
-}
-.cart-message-area{
-    padding: 10px;
-    height: 40px;
-    color: green;
-}
-
-/* Review */
-.review-main-title{
-    font-weight: bold;
-    font-size: 1.3em;
-    padding-bottom: 20px;
-}
-.review-message{
-    color: green;
-}
-.review-item{
-    margin: 10px 0 20px 0;
-}
-
-/* begin from */
-.sendReview{margin: 20px;width: 600px;margin: 50px 0 50px 0;}
-.frm-sendReview{}
-.frm-sendReview input{width: 450px;}
-.frm-sendReview input[type="radio"]{width: 13px; text-align: left; margin-right: 15px;}
-.frm-sendReview textarea{width: 450px;height: 200px;}
-.reviewInput{
+/* Common */
+.required{color: #ff0000;}
+.message-success{color: green;}
+.common-main-title{font-weight: bold;font-size: 1.3em;}
+.common-area{margin: 20px;width: 600px;margin: 50px 0 50px 0;}
+.common-frm{}
+.common-frm input{width: 450px;}
+.common-frm input[type="radio"]{width: 13px; text-align: left; margin-right: 15px;}
+.common-frm textarea{width: 450px;height: 200px;}
+.common-input{
     /* Clear the user's operating system's theme */
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -120,12 +67,33 @@
     width: 90%;
     height: 30px;
 }
-.reviewInput:focus{border: 1px solid #0094ff;box-shadow: 0 0 5px #0094ff;}
+.common-input:focus{border: 1px solid #0094ff;box-shadow: 0 0 5px #0094ff;}
+
+/* Product */
+.product-item{width: 250px;margin: 10px 10px 10px 10px;text-align: center;}
+    .product-item img{width: 200px;}
+.product-detail img{width: 200px;}
+.product-title{font-weight: bold;font-size: 1.3em;}
+.product-price{font-weight: bold;color: #3660b8;}
+.product-instock{color: green;}
+
+/* Shopping cart */
+.message-area{padding: 10px 0 0 0;height: 30px;color: green;}
+.icon-delete svg{height: 15px;cursor: pointer;}
+.cart-sum{text-align: right;font-weight: bold;}
+.cart-message-area{padding: 10px;height: 40px;color: green;}
+
+/* Review */
+.review-message{color: green;}
+.review-item{margin: 10px 0 20px 0;}
 .review-box{margin-bottom: 10px;}
 .review-customer-name{font-weight: bold;}
 .review-stars{height: 15px;margin: 0 0 5px 5px;}
-.required{color: #ff0000;}
-/* end form */
+/* End review */
+
+/* order */
+
+
 
 /* Buttons */
 .button {
@@ -169,20 +137,7 @@
 
 
 /* Left menu */
-.left-menu{
-    width: 100%;
-    padding: 10px 10px 10px 10px;
-    background: rgb(2, 80, 2);
-    color: #f8f8f8;
-    cursor: pointer;
-}
-    .left-menu:hover{
-        background: rgb(89, 156, 89);
-    }
-    .left-menu a{
-        color: #f8f8f8;
-        text-decoration: none;
-    }
-        .left-menu a:hover{
-            text-decoration: none;
-        }
+.left-menu{width: 100%;padding: 10px 10px 10px 10px;background: rgb(2, 80, 2);color: #f8f8f8;cursor: pointer;}
+    .left-menu:hover{background: rgb(89, 156, 89);}
+    .left-menu a{color: #f8f8f8;text-decoration: none;}
+        .left-menu a:hover{text-decoration: none;}
