@@ -1,17 +1,10 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { APIConfig } from '../config';
 
 import { Review } from './review';
 import { AddToCart } from './add-to-cart';
 
-const mapStateToProps = (state) => {
-    return ({
-        productFullList: state.product.productFullList
-    })
-}
-
-class ProductDetailClass extends Component {
+export class ProductDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -74,5 +67,3 @@ class ProductDetailClass extends Component {
         }
     }
 }
-
-export const ProductDetail = connect(mapStateToProps)(ProductDetailClass);

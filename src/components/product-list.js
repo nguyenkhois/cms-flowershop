@@ -20,11 +20,6 @@ const mapStateToProps = (state) => {
 }
 
 class ProductListClass extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { isMounted: false };
-    }
-
     async componentDidMount() {
         // Fetch only in the first time for direct access by URL
         const controller = new AbortController();
@@ -38,13 +33,6 @@ class ProductListClass extends Component {
                 controller.abort();
                 this.props.storeProducts(collection);
             });
-    }
-
-    componentDidMount() {
-        this.setState({isMounted: true})
-    }
-    componentWillUnmount(){
-        this.setState({isMounted: false})
     }
 
     render() {
@@ -62,7 +50,6 @@ class ProductListClass extends Component {
 
         const productList = this.props.productList;
         if (productList.length > 0) {
-            console.log('ProductComp - render');
             return (
                 <div>
                     <div className="row justify-content-end">

@@ -22,15 +22,12 @@ class AddToCartClass extends Component {
             message: {
                 content: '',
                 style: ''
-            },
-            isMounted: false
+            }
         };
     }
 
     handleOnChange = (e) => {
-        if (this.state.isMounted){
-            this.setState({ quantity: parseInt(e.target.value) });
-        }
+        this.setState({ quantity: parseInt(e.target.value) });
     }
 
     handleClick = (e) => {
@@ -76,15 +73,15 @@ class AddToCartClass extends Component {
         let messageObj = { content: '', style: '' };
         switch (updatedSuccess) {
             case 1:
-                messageObj = {...messageObj, content: 'Added to cart', style: 'message-success'}
+                messageObj = { ...messageObj, content: 'Added to cart', style: 'message-success' }
                 break;
             case -1:
-                messageObj = {...messageObj, content: 'Out of stock', style: 'message-unsuccess'}
+                messageObj = { ...messageObj, content: 'Out of stock', style: 'message-unsuccess' }
                 break;
             default:
                 break;
         }
-        
+
         this.printOutMessage(messageObj);
     }
 
@@ -92,21 +89,13 @@ class AddToCartClass extends Component {
         this.setState({ message: messageObj });
         setTimeout(() => {
             this.setState({
-                message: { 
-                    ...this.state.message, 
-                    content: '', 
-                    style: '' 
+                message: {
+                    ...this.state.message,
+                    content: '',
+                    style: ''
                 }
             });
         }, 500);
-    }
-
-    componentDidMount() {
-        this.setState({isMounted: true})
-    }
-    componentWillUnmount(){
-        this.setState({isMounted: false})
-        clearTimeout(this.printOutMessage);
     }
 
     render() {
