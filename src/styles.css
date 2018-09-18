@@ -44,6 +44,7 @@
 /* Common */
 .required{color: #ff0000;}
 .message-success{color: green;}
+.message-unsuccess{color: #ff0000;}
 .common-main-title{font-weight: bold;font-size: 1.3em;}
 .common-area{margin: 20px;width: 600px;margin: 50px 0 50px 0;}
 .common-frm{}

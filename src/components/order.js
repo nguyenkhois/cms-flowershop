@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import { APIConfig } from '../config';
+import { validateEmailAddress, forceKeyPressNumber } from '../lib';
 
 import { cartActions } from '../actions/cart.action';
 
@@ -24,8 +26,13 @@ class OrderClass extends Component {
                 phone: '',
                 address: ''
             },
-            message: ''
+            message: {
+                content: '',
+                style: ''
+            }
         };
+
+        this.txtName = React.createRef();
     }
     
     handleInputChange = (event) => {
@@ -35,79 +42,79 @@ class OrderClass extends Component {
         
         const newState = {...this.state.customerInfo, [name]: value };
         this.setState({ customerInfo: newState });
-        console.log(this.state);
     }
 
     handleSubmit = () => {
-        // Get the order sum
-        let sum = 0;
-        if (this.props.cart.length > 0){
-            this.props.cart.map((item) =>
-                sum += item.quantity * item.productInfo.price
-            );
-        }
-
-        // Create order with customer info, shopping cart and sum
-        const orderInfo = {
-            customerInfo: this.state.customerInfo,
-            orderedProducts: this.props.cart,
-            sum: sum
-        };
-
-        const orderUrl = APIConfig.baseURL + '/order';
-        fetch(orderUrl, {
-            method: 'POST',
-            body: JSON.stringify(orderInfo),
-            headers: {
-                'Content-Type': 'application/json'
+        /* Validation data before process by method handleValidation()
+           It returns true or false */
+        if (this.handleValidation()){
+            // Get the order sum from the shopping cart
+            let sum = 0;
+            if (this.props.cart.length > 0){
+                this.props.cart.map((item) =>
+                    sum += item.quantity * item.productInfo.price
+                );
             }
-        })
-        .then(() => {
-            console.log('Success!');
 
-            // Clear state
-            this.setState({
-                customerInfo: {
-                    name: '',
-                    email: '',
-                    phone: '',
-                    address: ''
+            // Create an order with customer info, shopping cart and sum
+            const orderInfo = {
+                customerInfo: this.state.customerInfo,
+                orderedProducts: this.props.cart,
+                sum: sum
+            };
+
+            // Send the order to API and it store this order in database
+            const orderUrl = APIConfig.baseURL + '/order';
+            fetch(orderUrl, {
+                method: 'POST',
+                body: JSON.stringify(orderInfo),
+                headers: {
+                    'Content-Type': 'application/json'
                 }
-            });
+            })
+            .then(() => {
+                console.log('Success!');
 
-            // Update database
-            this.props.cart.map((item) => {
-                this.updateStock(item.productId, item.quantity)
-            });
+                // Clear state
+                this.setState({
+                    customerInfo: {
+                        name: '',
+                        email: '',
+                        phone: '',
+                        address: ''
+                    }
+                });
 
-            // Clear cart in Redux state
-            this.props.clearCart();
+                // Update inStock quantity in database
+                this.props.cart.map((item) => {
+                    this.updateStock(item.productId, item.quantity)
+                });
 
-            // Print out a message
-            this.setState({ message: 'Thanks for your order!'});
-            setTimeout(() => {
-                this.setState({ message: '' });
-            }, 2000);
-        })
-        .catch(error => console.error('Error:', error))
+                // Clear cart in Redux state
+                this.props.clearCart();
 
-        // Print out a message
-        this.setState({ message: 'Thanks for your order!'});
-        setTimeout(() => {
-            this.setState({ message: '' });
-        }, 2000);
+                // Print out a message
+                this.printOutMessage('Thanks for your order!', 'message-success');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                this.printOutMessage('We are so sorry! Your order can not processed.', 'message-unsuccess');
+            })
+        } else {
+            this.printOutMessage('Your information is invalid', 'message-unsuccess');
+            this.txtName.current.focus();
+        }
     }
 
     async updateStock(productId, orderQuantity){
-        // Get inStock Quantity
+        // Get the current inStock quantity
         const productFetchURL = APIConfig.baseURL + '/product?_id=' + productId;
         const productResponse = await fetch(productFetchURL);
         await productResponse.json()
             .then((collection)=>{
-                console.log('Found!')
                 const inStock = collection[0].inStock;
                 
-                // Check again inStock before update database
+                // Check again inStock before update the quantity in database
                 if (inStock >= orderQuantity){
                     const productUrl = APIConfig.baseURL + '/product/' + productId;
                     fetch(productUrl, {
@@ -126,6 +133,40 @@ class OrderClass extends Component {
             .catch((e) => { console.log(e) });
     }
 
+    handleValidation(){
+        let validation = false;
+
+        if (this.state.customerInfo.name.length > 0 && 
+            this.state.customerInfo.email.length > 0 &&
+            validateEmailAddress(this.state.customerInfo.email) &&
+            this.state.customerInfo.phone.length > 0 &&
+            this.state.customerInfo.address.length > 0
+            ) {
+            validation = true;
+        }
+
+        return validation
+    }
+
+    printOutMessage(message, style){
+        const newMessage = {
+            ...this.state.message,
+            content: message,
+            style: style
+        }
+
+        this.setState({ message: newMessage });
+        setTimeout(() => {
+            this.setState({
+                message: { 
+                    ...this.state.message, 
+                    content: '', 
+                    style: '' 
+                }
+            });
+        }, 2000);
+    }
+
     render(){
         if (this.props.cart.length > 0){
             return(
@@ -136,7 +177,7 @@ class OrderClass extends Component {
                                 <tbody>
                                     <tr>
                                         <td colSpan="2">
-                                            <span className="common-main-title">Order information</span> <span className="message-success">{this.state.message}</span>
+                                            <span className="common-main-title">Order information</span> <span className={this.state.message.style}>{this.state.message.content}</span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -147,6 +188,7 @@ class OrderClass extends Component {
                                             <input name="name" id="txtName" className="common-input" required
                                                 onChange={e=>this.handleInputChange(e)}
                                                 value={this.state.customerInfo.name}
+                                                ref={this.txtName}
                                                 />
                                             <span className="required">*</span>
                                         </td>
@@ -157,8 +199,10 @@ class OrderClass extends Component {
                                         </td>
                                         <td>
                                             <input name="email" id="txtEmail" className="common-input" required
+                                                placeholder="your-email@domain.com"
                                                 onChange={e=>this.handleInputChange(e)}
                                                 value={this.state.customerInfo.email}
+                                                ref={this.txtEmail}
                                                 />
                                             <span className="required">*</span>
                                         </td>
@@ -170,7 +214,9 @@ class OrderClass extends Component {
                                         <td>
                                             <input name="phone" id="txtPhone" className="common-input" required
                                                 onChange={e=>this.handleInputChange(e)}
+                                                onKeyPress={(e)=>forceKeyPressNumber(e)}
                                                 value={this.state.customerInfo.phone}
+                                                ref={this.txtPhone}
                                                 />
                                             <span className="required">*</span>
                                         </td>
@@ -183,6 +229,7 @@ class OrderClass extends Component {
                                             <input name="address" id="txtAddress" className="common-input" required
                                                 onChange={e=>this.handleInputChange(e)}
                                                 value={this.state.customerInfo.address}
+                                                ref={this.txtAddress}
                                                 />
                                             <span className="required">*</span>
                                         </td>

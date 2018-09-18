@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+
 import { APIConfig } from '../config';
+import { validateEmailAddress } from '../lib';
 
 export class Review extends Component {
     constructor(props) {
@@ -13,8 +15,13 @@ export class Review extends Component {
                 email: '',
                 content: ''
             },
-            message: ''
+            message: {
+                content: '',
+                style: ''
+            }
         };
+
+        this.txtName = React.createRef();
     }
 
     async componentDidMount() {
@@ -42,34 +49,72 @@ export class Review extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        const reviewUrl = APIConfig.baseURL + '/review';
-        fetch(reviewUrl, {
-            method: 'POST',
-            body: JSON.stringify(this.state.customerReview),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(() => {
-            console.log('Success!');
 
-            // Using for clearing form and set state to default
-            const defaultCustomerReview = {
-                ...this.state.customerReview, 
-                rating: 5,
-                name: '',
-                email: '',
-                content: ''
-            }
-            this.setState({ customerReview: defaultCustomerReview });
+        /* Validation data before process by method handleValidation()
+           It returns true or false */
+        if (this.handleValidation()){
+            const reviewUrl = APIConfig.baseURL + '/review';
+            fetch(reviewUrl, {
+                method: 'POST',
+                body: JSON.stringify(this.state.customerReview),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(() => {
+                console.log('Success!');
 
-            // Print out a message
-            this.setState({ message: 'Thanks for your review!'});
-            setTimeout(() => {
-                this.setState({ message: '' });
-            }, 2000);
-        })
-        .catch(error => console.error('Error:', error));
+                // Using for clearing form and set state to default
+                const defaultCustomerReview = {
+                    ...this.state.customerReview, 
+                    rating: 5,
+                    name: '',
+                    email: '',
+                    content: ''
+                }
+                this.setState({ customerReview: defaultCustomerReview });
+
+                // Print out a message
+                this.printOutMessage('Thanks for your review!', 'message-success');
+            })
+            .catch(error => console.error('Error:', error));
+        } else {
+            this.printOutMessage('Your information is invalid', 'message-unsuccess');
+            this.txtName.current.focus();
+        }
+    }
+
+    handleValidation(){
+        let validation = false;
+
+        if (this.state.customerReview.name.length > 0 && 
+            this.state.customerReview.email.length > 0 &&
+            validateEmailAddress(this.state.customerReview.email) &&
+            this.state.customerReview.content.length > 0
+            ) {
+            validation = true;
+        }
+
+        return validation
+    }
+
+    printOutMessage(message, style){
+        const newMessage = {
+            ...this.state.message,
+            content: message,
+            style: style
+        }
+
+        this.setState({ message: newMessage });
+        setTimeout(() => {
+            this.setState({
+                message: { 
+                    ...this.state.message, 
+                    content: '', 
+                    style: '' 
+                }
+            });
+        }, 2000);
     }
 
     render() {
@@ -83,7 +128,7 @@ export class Review extends Component {
                                     <thead>
                                         <tr>
                                             <td colSpan="2">
-                                                <span className="common-main-title">Your review</span> <span className="review-message">{this.state.message}</span>
+                                                <span className="common-main-title">Your review</span> <span className={this.state.message.style}>{this.state.message.content}</span>
                                             </td>
                                         </tr>
                                     </thead>
@@ -102,22 +147,23 @@ export class Review extends Component {
                                         </tr>
                                         <tr>
                                             <td><label htmlFor="txtName">Your name</label></td>
-                                            <td><input type="text" id="txtName" name="name" className="common-input" required
+                                            <td><input type="text" id="txtName" name="name" className="common-input" maxLength="50" required
                                                 onChange={e => this.handleInputChange(e)}
                                                 value={this.state.customerReview.name}
+                                                ref={this.txtName}
                                             /><span className="required">*</span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td><label htmlFor="txtEmail">E-mail</label></td>
-                                            <td><input type="text" id="txtEmail" name="email" className="common-input"
+                                            <td><input type="text" id="txtEmail" name="email" className="common-input" maxLength="50"
                                                 onChange={e => this.handleInputChange(e)}
                                                 value={this.state.customerReview.email}
                                             /></td>
                                         </tr>
                                         <tr>
                                             <td><label htmlFor="txtContent">Comment</label></td>
-                                            <td><textarea name="txtContent" id="txtContent" name="content" cols="30" rows="10" className="common-input" required
+                                            <td><textarea name="txtContent" id="txtContent" name="content" cols="30" rows="10" className="common-input" maxLength="50" required
                                                 onChange={e => this.handleInputChange(e)}
                                                 value={this.state.customerReview.content}
                                             ></textarea><span className="required">*</span></td>

@@ -1,3 +1,20 @@
+export function validateEmailAddress(sEmail) {
+    let emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailPattern.test(sEmail);
+}
+
+export function forceKeyPressNumber(e) {
+    // let userKeyPress = window.event ? e.which : e.keyCode;
+    const userKeyPress = e.which;
+    if (userKeyPress !== 8){
+        if (userKeyPress < 48 || userKeyPress > 57){
+            e.preventDefault(); //stop the key press
+            return false;
+        }
+    }else
+        return true;
+}
+
 // Make limited words within a paragraph
 String.prototype.limitWords = function (limitNumber) {
     try {

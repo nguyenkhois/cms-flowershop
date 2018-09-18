@@ -17,7 +17,7 @@ const mapStateToProps = (state) => {
 class AddToCartClass extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
             quantity: 1,
             message: ''
         };
@@ -43,19 +43,19 @@ class AddToCartClass extends Component {
         const inStock = this.props.product.inStock;
         const foundItemIndex = this.props.cart.findIndexByProperty('productId', this.props.product._id);
         let updatedSuccess = 0;
-        
+
         if (foundItemIndex < 0) {
             // Find not found -> Add new
-            if (cartItem.quantity <= inStock){
+            if (cartItem.quantity <= inStock) {
                 this.props.addToCart(cartItem);
                 updatedSuccess = 1;
             } else {
                 updatedSuccess = -1;
-            }            
+            }
         } else {
             // It It found -> Update only quantity by productId
             const foundItemQuantity = this.props.cart[foundItemIndex].quantity
-            if ((cartItem.quantity + foundItemQuantity) <= inStock){
+            if ((cartItem.quantity + foundItemQuantity) <= inStock) {
                 this.props.updateQuantity({
                     productId: this.props.product._id,
                     quantity: this.state.quantity
@@ -67,12 +67,12 @@ class AddToCartClass extends Component {
         }
 
         // Control message from local state
-        switch(updatedSuccess){
+        switch (updatedSuccess) {
             case 1:
-                this.setState({ message: 'Added to cart!'});
+                this.setState({ message: 'Added to cart!' });
                 break;
             case -1:
-                this.setState({ message: 'Out of stock!'});
+                this.setState({ message: 'Out of stock!' });
                 break;
             default:
                 break;
@@ -83,18 +83,22 @@ class AddToCartClass extends Component {
             this.setState({ message: '' });
         }, 1000);
     }
-    
-    render(){
-        return(
+
+    componentWillUnmount() {
+        this.mounted = false;
+    }
+
+    render() {
+        return (
             <div className="col p-3">
                 <div>
                     <form>
                         <input name="quantity" type="number" min="1" max="50" defaultValue="1"
-                            onChange={e=>this.handleOnChange(e)}
+                            onChange={e => this.handleOnChange(e)}
                         /> {' - '}
-                        
+
                         <button type="button" className="btn btn-success"
-                            onClick={e=>this.handleClick(e)}>
+                            onClick={e => this.handleClick(e)}>
                             Add to cart
                         </button>
                     </form>
