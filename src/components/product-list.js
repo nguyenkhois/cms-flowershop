@@ -20,18 +20,34 @@ const mapStateToProps = (state) => {
 }
 
 class ProductListClass extends Component {
-    async componentDidMount() {
-        // Fetch only in the first time for direct access by URL
-        const categoryId = this.props.match.params.categoryId || '';
-        const productFetchURL = APIConfig.baseURL + '/product?_sort=name:asc&categoryId=' + categoryId;
-        const productResponse = await fetch(productFetchURL);
-        await productResponse.json()
-                .then((collection)=>{
-                    this.props.storeProducts(collection);
-                });
+    constructor(props) {
+        super(props);
+        this.state = { isMounted: false };
     }
 
-    render(){
+    async componentDidMount() {
+        // Fetch only in the first time for direct access by URL
+        const controller = new AbortController();
+        const signal = controller.signal;
+
+        const categoryId = this.props.match.params.categoryId || '';
+        const productFetchURL = APIConfig.baseURL + '/product?_sort=name:asc&categoryId=' + categoryId;
+        const productResponse = await fetch(productFetchURL, signal);
+        await productResponse.json()
+            .then((collection) => {
+                controller.abort();
+                this.props.storeProducts(collection);
+            });
+    }
+
+    componentDidMount() {
+        this.setState({isMounted: true})
+    }
+    componentWillUnmount(){
+        this.setState({isMounted: false})
+    }
+
+    render() {
         /* ----------
         1/  If The user access direct via URL
                 Using componentDidMount()
@@ -47,20 +63,20 @@ class ProductListClass extends Component {
         const productList = this.props.productList;
         if (productList.length > 0) {
             console.log('ProductComp - render');
-            return(
+            return (
                 <div>
                     <div className="row justify-content-end">
-                        <SortBox/>
+                        <SortBox />
                     </div>
                     <div className="row justify-content-center">
-                        { productList.map((item, index) => 
+                        {productList.map((item, index) =>
                             <div key={index.toString()}
                                 className="box box-shadow product-item">
                                 <div>
-                                    <img src={APIConfig.baseURL + '/' + item.image.url}/>
+                                    <img src={APIConfig.baseURL + '/' + item.image.url} />
                                 </div>
                                 <div className="product-title">
-                                    <Link to={'/product/' + item._id}>{item.name}</Link>                                
+                                    <Link to={'/product/' + item._id}>{item.name}</Link>
                                 </div>
                                 <div>
                                     {item.description.limitWords(10)}...
@@ -73,7 +89,7 @@ class ProductListClass extends Component {
                                         In stock {item.inStock}
                                     </div>
                                     <div>
-                                        <AddToCart product={item}/>
+                                        <AddToCart product={item} />
                                     </div>
                                 </div>
                             </div>

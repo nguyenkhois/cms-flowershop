@@ -75,11 +75,11 @@ export class Review extends Component {
                 this.setState({ customerReview: defaultCustomerReview });
 
                 // Print out a message
-                this.printOutMessage('Thanks for your review!', 'message-success');
+                this.printOutMessage({ content: 'Thanks for your review!', style: 'message-success' });
             })
             .catch(error => console.error('Error:', error));
         } else {
-            this.printOutMessage('Your information is invalid', 'message-unsuccess');
+            this.printOutMessage({ content: 'Your information is invalid', style: 'message-unsuccess' });
             this.txtName.current.focus();
         }
     }
@@ -98,14 +98,8 @@ export class Review extends Component {
         return validation
     }
 
-    printOutMessage(message, style){
-        const newMessage = {
-            ...this.state.message,
-            content: message,
-            style: style
-        }
-
-        this.setState({ message: newMessage });
+    printOutMessage(messageObj){
+        this.setState({ message: messageObj });
         setTimeout(() => {
             this.setState({
                 message: { 
@@ -114,7 +108,7 @@ export class Review extends Component {
                     style: '' 
                 }
             });
-        }, 2000);
+        }, 1000);
     }
 
     render() {

@@ -94,14 +94,14 @@ class OrderClass extends Component {
                 this.props.clearCart();
 
                 // Print out a message
-                this.printOutMessage('Thanks for your order!', 'message-success');
+                this.printOutMessage({ content: 'Thanks for your order!', style: 'message-success' });
             })
             .catch(error => {
                 console.error('Error:', error);
-                this.printOutMessage('We are so sorry! Your order can not processed.', 'message-unsuccess');
+                this.printOutMessage({ content: 'We are so sorry! Your order can not processed.', style: 'message-unsuccess' });
             })
         } else {
-            this.printOutMessage('Your information is invalid', 'message-unsuccess');
+            this.printOutMessage({ content: 'Your information is invalid', style: 'message-unsuccess' });
             this.txtName.current.focus();
         }
     }
@@ -148,14 +148,8 @@ class OrderClass extends Component {
         return validation
     }
 
-    printOutMessage(message, style){
-        const newMessage = {
-            ...this.state.message,
-            content: message,
-            style: style
-        }
-
-        this.setState({ message: newMessage });
+    printOutMessage(messageObj){
+        this.setState({ message: messageObj });
         setTimeout(() => {
             this.setState({
                 message: { 
@@ -164,7 +158,7 @@ class OrderClass extends Component {
                     style: '' 
                 }
             });
-        }, 2000);
+        }, 1000);
     }
 
     render(){

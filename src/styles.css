@@ -79,7 +79,7 @@
 .product-instock{color: green;}
 
 /* Shopping cart */
-.message-area{padding: 10px 0 0 0;height: 30px;color: green;}
+.message-area{padding: 10px 0 0 0;height: 30px;}
 .icon-delete svg{height: 15px;cursor: pointer;}
 .cart-sum{text-align: right;font-weight: bold;}
 .cart-message-area{padding: 10px;height: 40px;color: green;}

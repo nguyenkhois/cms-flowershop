@@ -19,12 +19,18 @@ class AddToCartClass extends Component {
         super(props);
         this.state = {
             quantity: 1,
-            message: ''
+            message: {
+                content: '',
+                style: ''
+            },
+            isMounted: false
         };
     }
 
     handleOnChange = (e) => {
-        this.setState({ quantity: parseInt(e.target.value) });
+        if (this.state.isMounted){
+            this.setState({ quantity: parseInt(e.target.value) });
+        }
     }
 
     handleClick = (e) => {
@@ -67,25 +73,40 @@ class AddToCartClass extends Component {
         }
 
         // Control message from local state
+        let messageObj = { content: '', style: '' };
         switch (updatedSuccess) {
             case 1:
-                this.setState({ message: 'Added to cart!' });
+                messageObj = {...messageObj, content: 'Added to cart', style: 'message-success'}
                 break;
             case -1:
-                this.setState({ message: 'Out of stock!' });
+                messageObj = {...messageObj, content: 'Out of stock', style: 'message-unsuccess'}
                 break;
             default:
                 break;
         }
-
-        // Clear message from state
-        setTimeout(() => {
-            this.setState({ message: '' });
-        }, 1000);
+        
+        this.printOutMessage(messageObj);
     }
 
-    componentWillUnmount() {
-        this.mounted = false;
+    printOutMessage = (messageObj) => {
+        this.setState({ message: messageObj });
+        setTimeout(() => {
+            this.setState({
+                message: { 
+                    ...this.state.message, 
+                    content: '', 
+                    style: '' 
+                }
+            });
+        }, 500);
+    }
+
+    componentDidMount() {
+        this.setState({isMounted: true})
+    }
+    componentWillUnmount(){
+        this.setState({isMounted: false})
+        clearTimeout(this.printOutMessage);
     }
 
     render() {
@@ -103,8 +124,8 @@ class AddToCartClass extends Component {
                         </button>
                     </form>
                 </div>
-                <div className="message-area">
-                    {this.state.message}
+                <div className={this.state.message.style + ' message-area'}>
+                    {this.state.message.content}
                 </div>
             </div>
         )

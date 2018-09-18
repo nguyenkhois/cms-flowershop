@@ -15,10 +15,14 @@ export class Home extends Component {
 
     async componentDidMount() {
         // Get all products from API
+        const controller = new AbortController();
+        const signal = controller.signal;
+
         const productFetchURL = APIConfig.baseURL + '/product?_sort=name:asc';
-        const productResponse = await fetch(productFetchURL);
+        const productResponse = await fetch(productFetchURL, signal);
         await productResponse.json()
                 .then((collection)=>{
+                    controller.abort();
                     this.setState({ productList: collection });
                 });
     }
@@ -51,7 +55,6 @@ export class Home extends Component {
         // Get products in all categories
         let productList = this.state.productList;
         if (productList.length > 0) {
-            console.log('Home-comp');
             return(
                 <div>
                     <div className="row justify-content-end">
