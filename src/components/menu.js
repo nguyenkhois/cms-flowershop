@@ -12,11 +12,15 @@ const mapDispatchToProps = {
 
 export class MenuClass extends Component {
     handleClick = async (categoryId) => {
+        const controller = new AbortController();
+        const signal = controller.signal;
+
         // Fetch data by categoryId and store in Redux state
         const productFetchURL = APIConfig.baseURL + '/product?_sort=name:asc&categoryId=' + categoryId;
-        const productResponse = await fetch(productFetchURL);
+        const productResponse = await fetch(productFetchURL, {signal});
         await productResponse.json()
                 .then((collection)=>{
+                    controller.abort();
                     this.props.storeProducts(collection);                    
                 });
     }

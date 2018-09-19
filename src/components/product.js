@@ -8,23 +8,28 @@ export class ProductDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            productDetail: []
+            productDetail: {}
         };
     }
+
     async componentDidMount() {
+        const controller = new AbortController();
+        const signal = controller.signal;
+
         // Fetch product detail from API
         const productId = this.props.match.params.productId || '';
         const productFetchURL = APIConfig.baseURL + '/product?_id=' + productId;
-        const productResponse = await fetch(productFetchURL);
+        const productResponse = await fetch(productFetchURL, {signal});
         await productResponse.json()
                 .then((collection)=>{
-                    this.setState({ productDetail: collection });
+                    controller.abort();
+                    this.setState({ productDetail: collection[0] });
                 });
     }
 
     render(){
         // Get product detail from local state
-        const productDetail = this.state.productDetail[0] || {};
+        const productDetail = this.state.productDetail || {};
 
         // Check if an productDetail object is empty
         if (Object.keys(productDetail).length) {

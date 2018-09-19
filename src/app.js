@@ -23,10 +23,14 @@ class App extends Component {
     }
 
     async componentDidMount(){
+        const controller = new AbortController();
+        const signal = controller.signal;
+
         const categoryFetchUrl = APIConfig.baseURL + '/category?_sort=name:asc';
-        const categoryResponse = await fetch(categoryFetchUrl);
+        const categoryResponse = await fetch(categoryFetchUrl, {signal});
         await categoryResponse.json()
             .then((collection) => {
+                controller.abort();
                 this.setState({ categoryList: collection });
             });
     }

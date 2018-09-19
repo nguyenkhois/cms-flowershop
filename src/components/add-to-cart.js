@@ -26,8 +26,20 @@ class AddToCartClass extends Component {
         };
     }
 
+    componentDidMount() {
+        this.mounted = true;
+    }
+
+    componentWillUnmount() {
+        this.mounted = false;
+    }
+
+    handleSetState = (payload) => {
+        this.mounted ? this.setState(payload) : null;
+    }
+
     handleOnChange = (e) => {
-        this.setState({ quantity: parseInt(e.target.value) });
+        this.handleSetState({ quantity: parseInt(e.target.value) });
     }
 
     handleClick = (e) => {
@@ -86,16 +98,16 @@ class AddToCartClass extends Component {
     }
 
     printOutMessage = (messageObj) => {
-        this.setState({ message: messageObj });
+        this.handleSetState({ message: messageObj });
         setTimeout(() => {
-            this.setState({
+            this.handleSetState({
                 message: {
                     ...this.state.message,
                     content: '',
                     style: ''
                 }
             });
-        }, 500);
+        }, 1000);
     }
 
     render() {

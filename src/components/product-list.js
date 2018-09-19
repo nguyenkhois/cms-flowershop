@@ -27,7 +27,7 @@ class ProductListClass extends Component {
 
         const categoryId = this.props.match.params.categoryId || '';
         const productFetchURL = APIConfig.baseURL + '/product?_sort=name:asc&categoryId=' + categoryId;
-        const productResponse = await fetch(productFetchURL, signal);
+        const productResponse = await fetch(productFetchURL, {signal});
         await productResponse.json()
             .then((collection) => {
                 controller.abort();
@@ -91,3 +91,4 @@ class ProductListClass extends Component {
 }
 
 export const ProductList = connect(mapStateToProps, mapDispatchToProps)(ProductListClass);
+

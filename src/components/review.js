@@ -25,11 +25,15 @@ export class Review extends Component {
     }
 
     async componentDidMount() {
+        const controller = new AbortController();
+        const signal = controller.signal;
+
         // Get reviews by productId from API
         const reviewFetchURL = APIConfig.baseURL + '/review?productId=' + this.props.productId;
-        const reviewResponse = await fetch(reviewFetchURL);
+        const reviewResponse = await fetch(reviewFetchURL, {signal});
         await reviewResponse.json()
             .then((collection) => {
+                controller.abort();
                 this.setState({ reviews: collection });
             });
 
