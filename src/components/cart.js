@@ -35,7 +35,7 @@ class ShoppingCartClass extends Component {
         }
 
         return(
-            <div className="row">
+            <div className="row justify-content-center">
                 <div className="cart-message-area">
                     {this.state.message}
                 </div>

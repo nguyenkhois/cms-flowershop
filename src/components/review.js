@@ -47,7 +47,7 @@ export class Review extends Component {
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
 
-        const newState = {...this.state.customerReview, [name]: value };
+        const newState = {...this.state.customerReview, [name]: value.toText() };
         this.setState({ customerReview: newState });
     }
 

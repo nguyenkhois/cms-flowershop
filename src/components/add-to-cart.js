@@ -114,10 +114,10 @@ class AddToCartClass extends Component {
         return (
             <div className="col p-3">
                 <div>
-                    <form>
+                    <form className="add-to-cart">
                         <input name="quantity" type="number" min="1" max="50" defaultValue="1"
                             onChange={e => this.handleOnChange(e)}
-                        /> {' - '}
+                        />
 
                         <button type="button" className="btn btn-success"
                             onClick={e => this.handleClick(e)}>

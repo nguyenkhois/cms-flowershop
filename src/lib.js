@@ -15,6 +15,14 @@ export function forceKeyPressNumber(e) {
         return true;
 }
 
+String.prototype.toText = function(){
+    return this.replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/\//g,"&frasl;")
+        .replace(/\'/g,"&apos;")
+        .replace(/\"/g, "&quot;");
+};
+
 // Make limited words within a paragraph
 String.prototype.limitWords = function (limitNumber) {
     try {

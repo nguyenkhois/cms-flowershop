@@ -77,12 +77,14 @@
 .product-title{font-weight: bold;font-size: 1.3em;}
 .product-price{font-weight: bold;color: #3660b8;}
 .product-instock{color: green;}
+.sort-box{margin: 10px 0 10px 0;}
 
 /* Shopping cart */
 .message-area{padding: 10px 0 0 0;height: 30px;}
 .icon-delete svg{height: 15px;cursor: pointer;}
 .cart-sum{text-align: right;font-weight: bold;}
 .cart-message-area{padding: 10px;height: 40px;color: green;}
+.add-to-cart input, button{ margin: 5px;}
 
 /* Review */
 .review-message{color: green;}
@@ -92,8 +94,12 @@
 .review-stars{height: 15px;margin: 0 0 5px 5px;}
 /* End review */
 
-/* order */
-
+/* Footer */
+.footer{ margin: 50px 0 50px 0; }
+.footer svg { height: 30px; margin: 0 10px 0 0;}
+.footer .brands{ margin: 10px 0 0 0;}
+.footer a{ color: #000000;}
+.footer a:hover{ color: green;}
 
 
 /* Buttons */

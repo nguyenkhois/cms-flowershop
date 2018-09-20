@@ -57,7 +57,7 @@ export class Home extends Component {
         if (productList.length > 0) {
             return(
                 <div>
-                    <div className="row justify-content-end">
+                    <div className="row justify-content-end sort-box">
                         <select onChange={e => this.handleSort(e)}>
                             <option value="0">--- Sort by ---</option>
                             <option value="1">Price</option>

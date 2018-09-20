@@ -12,6 +12,7 @@ import { Home } from './components/home';
 import { ProductList } from './components/product-list';
 import { ProductDetail } from './components/product';
 import { ShoppingCart } from './components/cart';
+import { About } from './components/about';
 import { Footer } from './components/footer';
 
 class App extends Component {
@@ -63,12 +64,15 @@ class App extends Component {
                                 <Route path="/cart" render={() => (
                                     <ShoppingCart/>
                                 )} />
+                                <Route path="/about" render={() => (
+                                    <About/>
+                                )} />
                             </Switch>
                         </div>
                     </main>
 
                     <footer className="row">
-                        <div className="col bg-green">
+                        <div className="col">
                             <Footer/>
                         </div>
                     </footer>

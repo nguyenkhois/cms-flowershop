@@ -29,18 +29,31 @@ class OrderClass extends Component {
             message: {
                 content: '',
                 style: ''
-            }
+            },
+            orderSendStatus: false
         };
 
         this.txtName = React.createRef();
     }
     
+    componentDidMount() {
+        this.mounted = true;
+    }
+    
+    componentWillUnmount() {
+        this.mounted = false;
+    }
+    
+    handleSetState = (payload) => {
+        this.mounted ? this.setState(payload) : null;
+    }
+
     handleInputChange = (event) => {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
         
-        const newState = {...this.state.customerInfo, [name]: value };
+        const newState = {...this.state.customerInfo, [name]: value.toText() };
         this.setState({ customerInfo: newState });
     }
 
@@ -95,6 +108,8 @@ class OrderClass extends Component {
 
                 // Print out a message
                 this.printOutMessage({ content: 'Thanks for your order!', style: 'message-success' });
+                
+                this.handleSetState({ orderSendStatus: true })
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -162,7 +177,7 @@ class OrderClass extends Component {
     }
 
     render(){
-        if (this.props.cart.length > 0){
+        if (this.props.cart.length > 0 && !this.state.orderSendStatus){
             return(
                 <div>
                     <div className="box box-default common-area">
@@ -245,6 +260,13 @@ class OrderClass extends Component {
                 </div>
             )
         } else {
+            if (this.props.cart.length === 0 && this.state.orderSendStatus){
+                return (
+                    <div className="row box box-shadow common-area message-success justify-content-center">
+                            Thanks for your order!
+                    </div>
+                )
+            }
             return null
         }
     }

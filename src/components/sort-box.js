@@ -43,7 +43,7 @@ class SortBoxClass extends Component {
     
     render(){
         return(
-            <div>
+            <div className="sort-box">
                 <select onChange={e => this.handleSort(e)}>
                     <option value="0">--- Sort by ---</option>
                     <option value="1">Price</option>
