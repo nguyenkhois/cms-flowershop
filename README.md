@@ -46,6 +46,9 @@ This web application is only using for my study about Headless CMS. You may want
 ||name|String| |Reviewer name|
 ||email|Email| |Reviewer email|
 
+## Deployment
+![Deployment](./docs/dockerfile.png)
+
 ## References
 * [Strapi tutorials](https://strapi.io/documentation/tutorials/)
 * [Express server config for React-Router](https://github.com/reactjs/react-router-tutorial/blob/master/lessons/11-productionish-server/README.md)
