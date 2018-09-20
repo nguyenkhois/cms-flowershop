@@ -12,7 +12,7 @@ This web application is only using for my study about Headless CMS. You may want
     * [Application structure](#application-structure)
     * [Database structure](#database-structure)
 * [Deployment](#deployment)
-    * [The simple Express server in Docker file on GitHub](https://github.com/nguyenkhois/expressjs-docker-simple-server)
+    * [The simple Express server in Dockerfile on GitHub](https://github.com/nguyenkhois/expressjs-docker-simple-server)
     * [My deployment on Docker Hub](https://hub.docker.com/r/khois/expresssrv/)
 
 
