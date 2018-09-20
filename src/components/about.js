@@ -9,7 +9,7 @@ export class About extends Component {
                 <div className="col">
                     <h3><b>About</b></h3>
                     <p>
-                        This web application is only using for my study about Headless CMS. You may want know more about this project on my <a rel="noreferrer noopen" target="_bank" href="https://github.com/nguyenkhois/cms-flowershop">GitHub</a> page.
+                        This web application is only using for my study about Headless CMS. You may want to know more about this project on my <a rel="noreferrer noopen" target="_bank" href="https://github.com/nguyenkhois/cms-flowershop">GitHub</a> page.
                     </p>
                     <p>Using for development and deployment:</p>
                     <ul>
