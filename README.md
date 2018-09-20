@@ -1,6 +1,8 @@
 # CMS - Flower shop
 This web application is only using for my study about Headless CMS. You may want to know how to start [here](./HOWTO.md).
 
+![Screenshot](./docs/screenshot.png)
+
 ## Table of contents
 * Requirement
     * [Docker installation](https://www.docker.com/get-started)
