@@ -117,9 +117,9 @@ export class Review extends Component {
 
     render() {
         return (
-            <div>
-                <div className="row">
-                    <div className="col">
+            <div className="row justify-content-center">
+                <div className="col">
+                    <div>
                         <div className="box box-default common-area">
                             <form id="frmSendReview" action="#" className="common-frm">
                                 <table>
@@ -183,6 +183,7 @@ export class Review extends Component {
                                 </table>
                             </form>
                         </div>
+
                         <div>
                             {this.state.reviews.map((item, index) =>
                                 <div key={index.toString()} className="review-item">

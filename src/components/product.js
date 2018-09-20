@@ -43,7 +43,7 @@ export class ProductDetail extends Component {
                     </div>
 
                     {/* Product details */}
-                    <div className="row">
+                    <div className="row justify-content-center">
                         <div className="col-4 product-detail">
                             <img src={ APIConfig.baseURL + '/' + productDetail.image.url }/>
                         </div>

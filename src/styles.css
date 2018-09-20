@@ -69,6 +69,7 @@
     height: 30px;
 }
 .common-input:focus{border: 1px solid #0094ff;box-shadow: 0 0 5px #0094ff;}
+.common-center{text-align: center;}
 
 /* Product */
 .product-item{width: 250px;margin: 10px 10px 10px 10px;text-align: center;}
