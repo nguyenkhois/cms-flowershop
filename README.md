@@ -15,6 +15,10 @@ This web application is only using for my study about Headless CMS. You may want
 
 
 ## Structure
+### Application structure
+
+![Appplication structure](./docs/app.png)
+
 ### Database structure
 
 | Content type | Field | Data type | Note |
