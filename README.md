@@ -33,7 +33,6 @@ This project is using of many dependencies and other things like Strapi, Amazon 
 |Bootstrap|Using for grid layout|
 |React|v16.5|
 |Redux|v4|
-|React-Redux|v5|
 |React-Router|v4|
 |Strapi|v3.0.0 alpha 14.1.1|
 |Docker|Linux container|
