@@ -1,8 +1,9 @@
-# CMS - Flower shop
+# CMS - Flower shop ([Demo](http://18.221.231.1:8000/))
 This web application is only using for my study about Headless CMS. You may want to know how to start [here](./HOWTO.md).
 
 ## Online demo and screenshot
 * [Online demo on Amazon Web Services](http://18.221.231.1:8000/)
+
 ![Screenshot](./docs/screenshot.png)
 
 ## Table of contents
