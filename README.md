@@ -29,6 +29,7 @@ This project is using of many dependencies and other things like Strapi, Amazon 
 
 |Main information|Notes|
 |---|:---:|
+|Bootstrap|Using for grid layout|
 |React|v16.5|
 |Redux|v4|
 |React-Redux|v5|
