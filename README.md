@@ -29,7 +29,7 @@ This project is using of many dependencies and other things like Strapi, Amazon 
 
 |Main information|Notes|
 |---|:---:|
-|Pure JS|ES6 and ES7|
+|Pure JavaScript|ES6 and ES7|
 |Bootstrap|Using for grid layout|
 |React|v16.5|
 |Redux|v4|
