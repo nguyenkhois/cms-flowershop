@@ -25,7 +25,8 @@ This web application is only using for my study about Headless CMS. You may want
     * [Docker Hub](https://hub.docker.com/u/khois/)
 
 ## Main information
-This project is using of many dependencies and other things like Strapi, Amazon Web Services - EC2
+This project is using of many dependencies and other things like Strapi, Amazon Web Services - EC2.
+
 |Main information|Notes|
 |---|---|
 |React|v16.5|
