@@ -116,90 +116,94 @@ export class Review extends Component {
     }
 
     render() {
-        return (
-            <div className="row justify-content-center">
-                <div className="col">
-                    <div>
-                        <div className="box box-default common-area">
-                            <form id="frmSendReview" action="#" className="common-frm">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <td colSpan="2">
-                                                <span className="common-main-title">Your review</span> <span className={this.state.message.style}>{this.state.message.content}</span>
-                                            </td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Rating</td>
-                                            <td>
-                                                <span>
-                                                    <label>1<input type="radio" name="rating" value="1" onChange={e => this.handleInputChange(e)} /></label>
-                                                    <label>2<input type="radio" name="rating" value="2" onChange={e => this.handleInputChange(e)} /></label>
-                                                    <label>3<input type="radio" name="rating" value="3" onChange={e => this.handleInputChange(e)} /></label>
-                                                    <label>4<input type="radio" name="rating" value="4" onChange={e => this.handleInputChange(e)} /></label>
-                                                    <label>5<input type="radio" name="rating" value="5" onChange={e => this.handleInputChange(e)} defaultChecked /></label>
-                                                </span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><label htmlFor="txtName">Your name</label></td>
-                                            <td><input type="text" id="txtName" name="name" className="common-input" maxLength="50" required
-                                                onChange={e => this.handleInputChange(e)}
-                                                value={this.state.customerReview.name}
-                                                ref={this.txtName}
-                                            /><span className="required">*</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><label htmlFor="txtEmail">E-mail</label></td>
-                                            <td><input type="text" id="txtEmail" name="email" className="common-input" maxLength="50"
-                                                onChange={e => this.handleInputChange(e)}
-                                                value={this.state.customerReview.email}
-                                            /></td>
-                                        </tr>
-                                        <tr>
-                                            <td><label htmlFor="txtContent">Comment</label></td>
-                                            <td><textarea name="txtContent" id="txtContent" name="content" cols="30" rows="10" className="common-input" maxLength="50" required
-                                                onChange={e => this.handleInputChange(e)}
-                                                value={this.state.customerReview.content}
-                                            ></textarea><span className="required">*</span></td>
-                                        </tr>
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <td></td>
-                                            <td>
-                                                <button type="button" className="btn button_send_review"
-                                                    onClick={e => this.handleSubmit(e)}
-                                                >Send</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colSpan="2">(<span className="required">*</span>) Required information</td>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                            </form>
-                        </div>
-
+        if (this.state.reviews.length > 0) {
+            return (
+                <div className="row justify-content-center">
+                    <div className="col">
                         <div>
-                            {this.state.reviews.map((item, index) =>
-                                <div key={index.toString()} className="review-item">
-                                    <div className="review-customer-name">
-                                        {item.name}
-                                        <img src={"/images/" + item.rating + "stars.png"} className="review-stars" />
+                            <div className="box box-default common-area">
+                                <form id="frmSendReview" action="#" className="common-frm">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <td colSpan="2">
+                                                    <span className="common-main-title">Your review</span> <span className={this.state.message.style}>{this.state.message.content}</span>
+                                                </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Rating</td>
+                                                <td>
+                                                    <span>
+                                                        <label>1<input type="radio" name="rating" value="1" onChange={e => this.handleInputChange(e)} /></label>
+                                                        <label>2<input type="radio" name="rating" value="2" onChange={e => this.handleInputChange(e)} /></label>
+                                                        <label>3<input type="radio" name="rating" value="3" onChange={e => this.handleInputChange(e)} /></label>
+                                                        <label>4<input type="radio" name="rating" value="4" onChange={e => this.handleInputChange(e)} /></label>
+                                                        <label>5<input type="radio" name="rating" value="5" onChange={e => this.handleInputChange(e)} defaultChecked /></label>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><label htmlFor="txtName">Your name</label></td>
+                                                <td><input type="text" id="txtName" name="name" className="common-input" maxLength="50" required
+                                                    onChange={e => this.handleInputChange(e)}
+                                                    value={this.state.customerReview.name}
+                                                    ref={this.txtName}
+                                                /><span className="required">*</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><label htmlFor="txtEmail">E-mail</label></td>
+                                                <td><input type="text" id="txtEmail" name="email" className="common-input" maxLength="50"
+                                                    onChange={e => this.handleInputChange(e)}
+                                                    value={this.state.customerReview.email}
+                                                /></td>
+                                            </tr>
+                                            <tr>
+                                                <td><label htmlFor="txtContent">Comment</label></td>
+                                                <td><textarea name="txtContent" id="txtContent" name="content" cols="30" rows="10" className="common-input" maxLength="50" required
+                                                    onChange={e => this.handleInputChange(e)}
+                                                    value={this.state.customerReview.content}
+                                                ></textarea><span className="required">*</span></td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td></td>
+                                                <td>
+                                                    <button type="button" className="btn button_send_review"
+                                                        onClick={e => this.handleSubmit(e)}
+                                                    >Send</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colSpan="2">(<span className="required">*</span>) Required information</td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </form>
+                            </div>
+    
+                            <div>
+                                {this.state.reviews.map((item, index) =>
+                                    <div key={index.toString()} className="review-item">
+                                        <div className="review-customer-name">
+                                            {item.name}
+                                            <img src={"/images/" + item.rating + "stars.png"} className="review-stars" />
+                                        </div>
+                                        <div>
+                                            {item.content}
+                                        </div>
                                     </div>
-                                    <div>
-                                        {item.content}
-                                    </div>
-                                </div>
-                            )}
+                                )}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        )
+            )
+        } else {
+            return null
+        }
     }
 }

@@ -1,9 +1,12 @@
 # CMS - Flower shop
 This web application is only using for my study about Headless CMS. You may want to know how to start [here](./HOWTO.md).
 
+## Online demo and screenshot
+* [Online demo on Amazon Web Services](http://18.221.231.1:8000/)
 ![Screenshot](./docs/screenshot.png)
 
 ## Table of contents
+* [Main information](#main-information)
 * Requirement
     * [Docker installation](https://www.docker.com/get-started)
     * [MongoDB](https://hub.docker.com/_/mongo/)
@@ -14,7 +17,23 @@ This web application is only using for my study about Headless CMS. You may want
 * [Deployment](#deployment)
     * [The simple Express server in Dockerfile on GitHub](https://github.com/nguyenkhois/expressjs-docker-simple-server)
     * [My deployment on Docker Hub](https://hub.docker.com/r/khois/expresssrv/)
+* Find me on
+    * [GitHub](https://github.com/nguyenkhois)
+    * [npm](https://www.npmjs.com/~nguyenkhois)
+    * [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=KhoiLe.extra-react-snippets)
+    * [Docker Hub](https://hub.docker.com/u/khois/)
 
+## Main information
+This project is using of many dependencies and other things like Strapi, Amazon Web Services - EC2
+|Main information|Notes|
+|---|---|
+|React|v16.5|
+|Redux|v4|
+|React-Redux|v5|
+|React-Router|v4|
+|Strapi|v3.0.0 alpha 14.1.1|
+|Docker|Linux container|
+|Amazon Web Services (AWS)|EC2-Linux|
 
 ## Structure
 ### Application structure

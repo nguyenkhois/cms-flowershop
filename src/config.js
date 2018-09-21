@@ -1,3 +1,3 @@
 export const APIConfig = {
-    baseURL: 'http://localhost:1337'
+    baseURL: 'http://18.221.231.1:1337'
 }
