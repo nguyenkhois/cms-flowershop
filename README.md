@@ -49,7 +49,10 @@ This project is using of many dependencies and other things like Strapi, Docker,
 
 ![How it works](./docs/howitworks.png)
 
-All these things are in Docker on a Linux server.
+All these things are in Docker on a Linux server (AWS):
+* Strapi
+* MongoDB
+* My React app (cms-flowershop) is in a Dockerfile
 
 ## Structure
 ### Application structure
