@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { APIConfig } from '../config';
 
+import { ReviewForm } from './review-form';
 import { Review } from './review';
 import { AddToCart } from './add-to-cart';
 
@@ -64,7 +65,14 @@ export class ProductDetail extends Component {
                     </div>
 
                     {/* Reviews */}
-                    <Review productId={productDetail._id}/>
+                    <div className="row justify-content-center">
+                        <div className="col">
+                            <div>
+                                <ReviewForm productId={productDetail._id}/>
+                                <Review productId={productDetail._id}/>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             )
         } else {
