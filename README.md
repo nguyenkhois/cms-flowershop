@@ -1,13 +1,12 @@
 # CMS - Flower shop ([Demo](http://18.221.231.1:8000/))
-This web application is only using for my study about Headless CMS. You may want to know how to start [here](./HOWTO.md).
+This web application is only using for my study about Headless CMS. This project is based on a Headlass CSM (Strapi) and Docker. You may want to know more information that is below and how to start [here](./HOWTO.md).
 
-## Online demo and screenshot
-* [Online demo on Amazon Web Services (AWS)](http://18.221.231.1:8000/)
-
-![Screenshot](./docs/screenshot.png)
+![How it works](./docs/howitworks.png)
 
 ## Table of contents
 * [Main information](#main-information)
+    * [Screenshot and online demo](#online-demo-and-screenshot)
+    * [How it works](#how-it-works)
 * Requirement
     * [Docker installation](https://www.docker.com/get-started)
     * [MongoDB](https://hub.docker.com/_/mongo/)
@@ -25,18 +24,30 @@ This web application is only using for my study about Headless CMS. You may want
     * [Docker Hub](https://hub.docker.com/u/khois/)
 
 ## Main information
-This project is using of many dependencies and other things like Strapi, Amazon Web Services - EC2.
+This project is using of many dependencies and other things like Strapi, Docker, Amazon Web Services - EC2 (Linux).
 
-|Main information|Notes|
-|---|:---:|
-|Pure JavaScript|ES6 and ES7|
-|Bootstrap|Using for grid layout|
-|React|v16.5|
-|Redux|v4|
-|React-Router|v4|
-|Strapi|v3.0.0 alpha 14.1.1|
-|Docker|Linux container|
-|Amazon Web Services (AWS)|EC2-Linux|
+|Main information|Version|Notes|
+|---|:---:|---|
+|Pure JavaScript|ES6 and ES7|Using also for React auto binding|
+|Bootstrap|4.1.3|Using for grid layout|
+|React|16.5.2||
+|Redux|4||
+|React-Router|4.3.1||
+|Strapi|3.0.0 alpha 14.1.1||
+|Docker|18|Linux container|
+|Amazon Web Services (AWS)|Linux|EC2|
+|Babel|7.1|With Babel Loader 8|
+|Webpack|4.19.1||
+|Webpack Dev Server|3.1.8|With code splitting|
+
+### Online demo and screenshot
+* [Online demo on Amazon Web Services (AWS)](http://18.221.231.1:8000/)
+
+![Screenshot](./docs/screenshot.png)
+
+### How it works
+
+![How it works](./docs/howitworks.png)
 
 ## Structure
 ### Application structure
