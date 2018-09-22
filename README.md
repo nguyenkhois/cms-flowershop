@@ -84,7 +84,7 @@ All these things are in Docker on a Linux server.
 ## Deployment
 ![Deployment](./docs/dockerfile.png)
 
-You may want to view [The simple Express server in Dockerfile](https://github.com/nguyenkhois/expressjs-docker-simple-server) in the other repository on my GitHub page.
+You may want to view [My Dockerfile](https://github.com/nguyenkhois/expressjs-docker-simple-server) in the other repository on my GitHub page.
 
 ## References
 * [Strapi tutorials](https://strapi.io/documentation/tutorials/)
