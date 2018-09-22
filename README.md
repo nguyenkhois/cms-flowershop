@@ -49,6 +49,8 @@ This project is using of many dependencies and other things like Strapi, Docker,
 
 ![How it works](./docs/howitworks.png)
 
+All these things are in Docker on a Linux server.
+
 ## Structure
 ### Application structure
 
@@ -81,6 +83,8 @@ This project is using of many dependencies and other things like Strapi, Docker,
 
 ## Deployment
 ![Deployment](./docs/dockerfile.png)
+
+You may want to view [The simple Express server in Dockerfile](https://github.com/nguyenkhois/expressjs-docker-simple-server) in the other repository on my GitHub page.
 
 ## References
 * [Strapi tutorials](https://strapi.io/documentation/tutorials/)
