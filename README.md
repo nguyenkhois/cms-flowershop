@@ -92,3 +92,4 @@ You may want to view [My Dockerfile](https://github.com/nguyenkhois/expressjs-do
 ## References
 * [Strapi tutorials](https://strapi.io/documentation/tutorials/)
 * [Express server config for React-Router](https://github.com/reactjs/react-router-tutorial/blob/master/lessons/11-productionish-server/README.md)
+* [Browserslist](https://github.com/browserslist/browserslist)
