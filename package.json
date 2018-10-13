@@ -15,12 +15,6 @@
   ],
   "author": "Khoi Le",
   "license": "ISC",
-  "browserslist": [
-    "since 2015",
-    "> 1%",
-    "maintained node versions",
-    "not dead"
-  ],
   "dependencies": {
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
