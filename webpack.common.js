@@ -15,34 +15,13 @@ module.exports = {
         filename: '[name].[hash].js', // what name to use for bundle
         publicPath: '/' // Using for React-Router
     },
-    optimization: {
-        splitChunks: {
-            chunks: 'async',
-            minSize: 30000,
-            maxSize: 0,
-            minChunks: 1,
-            maxAsyncRequests: 5,
-            maxInitialRequests: 3,
-            automaticNameDelimiter: '~',
-            name: true,
-            cacheGroups: {
-                vendors: {
-                    test: /[\\/]node_modules[\\/]/,
-                    priority: -10
-                },
-                default: {
-                    minChunks: 2,
-                    priority: -20,
-                    reuseExistingChunk: true
-                }
-            }
-        }
-    },
     module: {
         rules: [
             {
                 test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
+                include: [
+                    path.resolve(__dirname, "src")
+                ],
                 use: ['babel-loader']
             }
         ]
