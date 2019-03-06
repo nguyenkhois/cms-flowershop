@@ -1,4 +1,4 @@
-# Headless CMS and Docker - Flower shop ([Demo](http://18.221.231.1:8000/))
+# Headless CMS and Docker - Flower shop ([Demo](http://aws.vlexikon.com:8000/))
 This web application is only using for my study about Headless CMS - [Strapi](http://strapi.io), [Docker](https://www.docker.com/) and [Amazon Web Services (AWS)](https://aws.amazon.com/). You may want to know more information that is below and how to start [here](./HOWTO.md).
 
 ![How it works](./docs/howitworks.png)
