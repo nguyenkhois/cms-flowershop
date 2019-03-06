@@ -16,8 +16,8 @@
   "author": "Khoi Le",
   "license": "ISC",
   "dependencies": {
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
     "react-redux": "^6.0.1",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.1",

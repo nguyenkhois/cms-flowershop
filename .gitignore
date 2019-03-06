@@ -2,4 +2,6 @@
 /assets
 /dist
 /node_modules
+
+config.sample
 package-lock.json
