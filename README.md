@@ -1,11 +1,11 @@
-# Headless CMS and Docker - Flower shop ([Demo](http://aws.vlexikon.com:8000/))
+# Headless CMS and Docker - Flower shop
 This web application is only using for my study about Headless CMS - [Strapi](http://strapi.io), [Docker](https://www.docker.com/) and [Amazon Web Services (AWS)](https://aws.amazon.com/). You may want to know more information that is below and how to start [here](./HOWTO.md).
 
 ![How it works](./docs/howitworks.png)
 
 ## Table of contents
 * [Main information](#main-information)
-    * [Screenshot and online demo](#online-demo-and-screenshot)
+    * [Screenshot](#screenshot)
     * [How it works](#how-it-works)
 * Requirement
     * [Docker installation](https://www.docker.com/get-started)
@@ -40,9 +40,7 @@ This project is using of many dependencies and other things like Strapi, Docker,
 |Webpack|4.19.1||
 |Webpack Dev Server|3.1.8|With code splitting|
 
-### Online demo and screenshot
-* [Online demo on Amazon Web Services (AWS)](http://18.221.231.1:8000/)
-
+### Screenshot
 ![Screenshot](./docs/screenshot.png)
 
 ### How it works
